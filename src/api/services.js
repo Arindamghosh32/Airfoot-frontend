@@ -9,7 +9,7 @@ export const authService = {
 export const productService = {
   getAll:           (params)   => api.get('/products', { params }),
   getById:          (id)       => api.get(`/products/${id}`),
-  getImage:         (filename) => `/api/products/image/${filename}`,
+  getImage:         (filename) => `${import.meta.env.VITE_API_URL || '/api'}/products/image/${filename}`, // ← FIXED
   getOwnerInventory:()         => api.get('/products/owner/inventory'),
   create:           (formData) => api.post('/products', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
